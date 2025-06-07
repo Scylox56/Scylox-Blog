@@ -1,6 +1,6 @@
 # 📝 Personal Blog Website
 
-A responsive and modern blog website built with **HTML**, **CSS**, **Tailwind CSS**, and **JavaScript**. This project showcases a minimalistic blog layout suitable for sharing articles, thoughts, or tech posts.
+A responsive and modern blog website built with **HTML**, **CSS**, **Tailwind CSS**, and **JavaScript**. This project showcases a beautiful blog layout suitable for sharing articles about tech, shows, movies and games.
 
 ## Features
 
