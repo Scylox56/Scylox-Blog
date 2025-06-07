@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Scylox Blog</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: {
+              50: '#121212',
+              100: '#222222',
+              200: '#bae6fd',
+              300: '#7dd3fc',
+              400: '#38bdf8',
+              500: '#0ea5e9',
+              600: '#0284c7',
+              700: '#0369a1',
+              800: '#075985',
+              900: '#0c4a6e',
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            serif: ['Merriweather', 'serif'],
+          },
+          animation: {
+            'fade-in': 'fadeIn 0.5s ease-in-out',
+          },
+          keyframes: {
+            fadeIn: {
+              '0%': { opacity: '0' },
+              '100%': { opacity: '1' },
+            }
+          }
+        }
+      }
+    };
+  </script>
+  <link rel="stylesheet" href="style/style.css">
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="icon" type="image/png" href="assets/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="shortcut icon" href="assets/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png" />
+  <link rel="manifest" href="assets/site.webmanifest" />
+</head>
+
+<body class="bg-gray-50 dark:bg-primary-50 text-gray-800 dark:text-gray-200 transition-colors duration-300">
+    <!-- Navigation -->
+    <nav class="bg-white dark:bg-primary-50 shadow-md sticky top-0 z-50 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="#" class="text-xl font-bold text-gray-900 dark:text-white flex items-center">
+                        <span class="bg-purple-500 text-white p-2 rounded mr-2">Scylox</span>
+                        Blog
+                    </a>
+                    <div class="hidden md:ml-10 md:flex md:space-x-8">
+                        <a href="index.html" class="text-purple-600 dark:text-white border-b-2 border-purple-500 inline-flex items-center px-1 pt-1 text-sm font-medium">Home</a>
+                        <a href="articles.html" class="text-gray-500 dark:text-gray-300 hover:text-gray-700 dark:hover:text-gray-100 inline-flex items-center px-1 pt-1 text-sm font-medium">Articles</a>
+                        <a href="categories.html" class="text-gray-500 dark:text-gray-300 hover:text-gray-700 dark:hover:text-gray-100 inline-flex items-center px-1 pt-1 text-sm font-medium">Categories</a>
+                        <a href="about.html" class="text-gray-500 dark:text-gray-300 hover:text-gray-700 dark:hover:text-gray-100 inline-flex items-center px-1 pt-1 text-sm font-medium">About</a>
+                    </div>
+                </div>
+                <div class="flex items-center">
+                    <button id="theme-toggle" type="button" class="p-2 rounded-full focus:outline-none text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700">
+                        <svg id="theme-toggle-dark-icon" class="w-5 h-5 hidden" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+                        </svg>
+                        <svg id="theme-toggle-light-icon" class="w-5 h-5 hidden" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path>
+                        </svg>
+                    </button>
+                    <button class="md:hidden p-2 rounded-full focus:outline-none text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700" id="mobile-menu-button">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile menu -->
+        <div class="md:hidden hidden" id="mobile-menu">
+            <div class="pt-2 pb-3 space-y-1 px-4">
+                <a href="index.html" class="bg-primary-50 dark:bg-gray-700 text-primary-600 dark:text-primary-400 block px-3 py-2 rounded-md text-base font-medium">Home</a>
+                <a href="articles.html" class="text-gray-500 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 block px-3 py-2 rounded-md text-base font-medium">Articles</a>
+                <a href="categories.html" class="text-gray-500 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 block px-3 py-2 rounded-md text-base font-medium">Categories</a>
+                <a href="about.html" class="text-gray-500 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 block px-3 py-2 rounded-md text-base font-medium">About</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="bg-gradient-to-r from-purple-500 to-primary-700 dark:from-purple-900 dark:to-blue-900 text-white py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="md:flex md:items-center md:justify-between">
+                <div class="md:w-1/2 animate-fade-in">
+                    <span class="bg-white/20 backdrop-blur-sm text-xs font-semibold px-2.5 py-0.5 rounded">NEW ARTICLE</span>
+                    <h1 class="mt-4 text-4xl font-bold tracking-tight sm:text-5xl font-serif">The New Season Of ANDOR</h1>
+                    <p class="mt-4 text-lg leading-relaxed">Andor’s series finale is all about tying up loose ends. After an incredible crescendo on Ghorman in chapter 3, Tony Gilroy and company set out to get Andor’s affairs in order.</p>
+                    <div class="mt-8 flex items-center">
+                        <img class="h-10 w-10 rounded-full" src="assets/wf1.png" alt="Author">
+                        <div class="ml-3">
+                            <p class="text-sm font-medium">Wilson Fisk</p>
+                            <p class="text-xs text-white-200">Published on May 12, 2025 · 8 min read</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-10 md:mt-0 md:w-5/12">
+                    <div class="relative overflow-hidden rounded-xl shadow-2xl">
+                        <a href="andorart.html">
+                        <img class="w-full h-auto" src="assets/andorpic1.jpeg" alt="Featured post">
+                        </a>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 p-6">
+                            <span class="bg-primary-500 text-white text-xs font-semibold px-2.5 py-0.5 rounded">TRENDING</span>
+                           <a href="andorart.html"> <h2 class="mt-2 text-xl font-bold text-white hover:text-primary-600 dark:hover:text-primary-400 transition-colors">ANDOR Series Final Review</h2></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <!-- Categories -->
+        <div class="mb-12">
+            <h2 class="text-2xl font-bold mb-6 font-serif">Browse by Category</h2>
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 content-center">
+            <a href="cat-tvshows.html" class="bg-white dark:bg-primary-100 p-4 rounded-lg shadow-sm border border-gray-200 dark:border-zinc-900 flex flex-col items-center transition-shadow neon-blue">
+                 <!-- TV Shows -->
+                     <div class="bg-blue-700/30 dark:bg-primary-900/30 p-3 rounded-full mb-2">
+                        <i class="fas fa-solid fa-tv text-blue-600 dark:text-primary-400 text-xl"></i>
+                     </div>
+                     <span class="text-sm font-medium">TV Shows</span>
+                        </a>
+                     <a href="cat-games.html" class="bg-white dark:bg-primary-100 p-4 rounded-lg shadow-sm border border-gray-200 dark:border-zinc-900 flex flex-col items-center transition-shadow neon-purple">
+                 <!-- Games -->
+                     <div class="bg-purple-100 dark:bg-purple-900/30 p-3 rounded-full mb-2">
+                        <i class="fas fa-duotone fa-solid fa-gamepad text-purple-600 dark:text-purple-400 text-xl"></i>
+                     </div>
+                    <span class="text-sm font-medium">Games</span>
+                     </a>
+            <a href="cat-movies.html" class="bg-white dark:bg-primary-100 p-4 rounded-lg shadow-sm border border-gray-200 dark:border-zinc-900 flex flex-col items-center transition-shadow neon-green">
+                 <!-- Movies -->
+                      <div class="bg-green-100 dark:bg-green-900/30 p-3 rounded-full mb-2">
+                         <i class="fas fa-solid fa-video text-green-600 dark:text-green-400 text-xl"></i>
+                      </div>
+                     <span class="text-sm font-medium">Movies</span>
+             </a>
+            <a href="cat-tech.html" class="bg-white dark:bg-primary-100 p-4 rounded-lg shadow-sm border border-gray-200 dark:border-zinc-900 flex flex-col items-center transition-shadow neon-yellow">
+                 <!-- Tech -->
+                    <div class="bg-yellow-100 dark:bg-yellow-900/30 p-3 rounded-full mb-2">
+                         <i class="fas fa-solid fa-microchip text-yellow-600 dark:text-yellow-400 text-xl"></i>
+                    </div>
+                    <span class="text-sm font-medium">Tech</span>
+                    </a>
+                    <a href="cat-comics.html" class="bg-white dark:bg-primary-100 p-4 rounded-lg shadow-sm border border-gray-200 dark:border-zinc-900 flex flex-col items-center transition-shadow neon-red">
+                     <!-- Comics -->
+                    <div class="bg-red-100 dark:bg-red-900/30 p-3 rounded-full mb-2">
+                    <i class="fas fa-solid fa-book-open text-red-600 dark:text-red-400 text-xl"></i>
+                     </div>
+                     <span class="text-sm font-medium">Comics</span>
+                        </a>
+                    </div>
+         </div>
+
+        <!-- Featured Posts -->
+        <div class="mb-12">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-2xl font-bold font-serif">Featured Articles</h2>
+                
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Post 1 -->
+                <article class="bg-white dark:bg-primary-100 rounded-xl overflow-hidden shadow-sm transition-shadow duration-300 neon-blue">
+                    <a href="ddart.html">
+                        <img class="w-full h-48 object-cover" src="assets/ddpic1.jpg" alt="Post thumbnail">
+                        <div class="p-6">
+                            <div class="flex items-center text-xs text-gray-500 dark:text-gray-400 mb-2">
+                                <span class="bg-blue-700/30 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400 px-2 py-1 rounded">TV Shows</span>
+                                <span class="mx-2">•</span>
+                                <span>March 4, 2025</span>
+                            </div>
+                            <h3 class="text-xl font-bold mb-2 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Daredevil: Born Again Season 1 Review</h3>
+                            <p class="text-gray-600 dark:text-gray-300 mb-4">A strong start and spectacular finish prop up Matt Murdock’s return.</p>
+                            <div class="flex items-center">
+                                <img class="w-8 h-8 rounded-full mr-2" src="assets/wf1.png" alt="Author">
+                                <span class="text-sm font-medium">Wilson Fisk</span>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+
+                <!-- Post 2 -->
+                <article class="bg-white dark:bg-primary-100 rounded-xl overflow-hidden shadow-sm transition-shadow duration-300 neon-purple">
+                    <a href="hd2art.html">
+                        <img class="w-full h-48 object-cover" src="assets/hd2-1.png" alt="Post thumbnail">
+                        <div class="p-6">
+                            <div class="flex items-center text-xs text-gray-500 dark:text-gray-400 mb-2">
+                                <span class="bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 px-2 py-1 rounded">Games</span>
+                                <span class="mx-2">•</span>
+                                <span>May 14, 2025</span>
+                            </div>
+                            <h3 class="text-xl font-bold mb-2 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Helldivers 2 Leaks Reveal Super Earth Gameplay.</h3>
+                            <p class="text-gray-600 dark:text-gray-300 mb-4">Players Will Fight Against the Illuminate on Super Earth Itself Next Week — and Now Gameplay of Super Earth Mega Cities Has Leaked, Too.</p>
+                            <div class="flex items-center">
+                                <img class="w-8 h-8 rounded-full mr-2" src="assets/jdiver1.png" alt="Author">
+                                <span class="text-sm font-medium">John Helldiver</span>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+
+                <!-- Post 3 -->
+                <article class="bg-white dark:bg-primary-100 rounded-xl overflow-hidden shadow-sm transition-shadow duration-300 neon-green">
+                    <a href="miart.html">
+                        <img class="w-full h-48 object-cover" src="assets/mipic2.jpg" alt="Post thumbnail">
+                        <div class="p-6">
+                            <div class="flex items-center text-xs text-gray-500 dark:text-gray-400 mb-2">
+                                <span class="bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 px-2 py-1 rounded">Movies</span>
+                                <span class="mx-2">•</span>
+                                <span>May 13, 2025</span>
+                            </div>
+                            <h3 class="text-xl font-bold mb-2 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Mission: Impossible – Final Reckoning Review</h3>
+                            <p class="text-gray-600 dark:text-gray-300 mb-4">This franchise will self-destruct in 8 movies…</p>
+                            <div class="flex items-center">
+                                <img class="w-8 h-8 rounded-full mr-2" src="assets/cmq1.png" alt="Author">
+                                <span class="text-sm font-medium">Christopher McQuarrie</span>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+            </div>
+        </div>
+
+        <!-- Popular Posts -->
+        <div class="mb-12">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-2xl font-bold font-serif">Most Popular</h2>
+                <a href="#" class="text-primary-600 dark:text-primary-400 hover:underline">View all</a>
+            </div>
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Popular Post 1 -->
+                <article class="bg-white dark:bg-primary-100 rounded-xl overflow-hidden shadow-sm transition-shadow duration-300 flex neon-blue">
+                    <a href="invart.html" class="w-1/3">
+                        <img class="w-full h-full object-cover" src="assets/inpic1.jpg" alt="Post thumbnail">
+                    </a>
+                    <div class="w-2/3 p-6">
+                        <div class="flex items-center text-xs text-gray-500 dark:text-gray-400 mb-2">
+                            <span class="bg-blue-100 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400 px-2 py-1 rounded">TV Shows</span>
+                            <span class="mx-2">•</span>
+                            <span>March 20, 2025</span>
+                        </div>
+                        <h3 class="text-lg font-bold mb-2 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"><a href="invart.html">Invincible Season 4 'Should' Premiere in 2026 as Amazon Teases Thragg Casting</a></h3>
+                        <p class="text-sm text-gray-600 dark:text-gray-300 mb-3"><a href="invart.html">Amazon Prime Video has confirmed a 2026 release window for Invincible Season 4 along with an army of other details to look forward to now that Season 3 has wrapped up.</a></p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center">
+                                <img class="w-6 h-6 rounded-full mr-2" src="https://randomuser.me/api/portraits/women/68.jpg" alt="Author">
+                                <span class="text-xs font-medium">Emily Rodriguez</span>
+                            </div>
+                            <span class="text-xs text-gray-500 dark:text-gray-400">12 min read</span>
+                        </div>
+                    </div>
+                </article>
+                <!-- Popular Post 2 -->
+                <article class="bg-white dark:bg-primary-100 rounded-xl overflow-hidden shadow-sm transition-shadow duration-300 flex neon-yellow">
+                    <a href="ninart.html" class="w-1/3">
+                        <img class="w-full h-full object-cover" src="assets/npic2.jpg" alt="Post thumbnail">
+                    </a>
+                    <div class="w-2/3 p-6">
+                        <div class="flex items-center text-xs text-gray-500 dark:text-gray-400 mb-2">
+                            <span class="bg-yellow-100 dark:bg-yellow-900/30 text-yellow-600 dark:text-yellow-400 px-2 py-1 rounded">Tech</span>
+                            <span class="mx-2">•</span>
+                            <span>May 22, 2025</span>
+                        </div>
+                        <h3 class="text-lg font-bold mb-2 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"><a href="ninart.html">Why the Switch 2’s Price Was Never Going to Hamper Its Success</a></h3>
+                        <p class="text-sm text-gray-600 dark:text-gray-300 mb-3"><a href="ninart.html">A desirable games library and proven form factor overcomes the issue of a surprisingly high price tag.</a></p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center">
+                                <img class="w-6 h-6 rounded-full mr-2" src="https://randomuser.me/api/portraits/men/41.jpg" alt="Author">
+                                <span class="text-xs font-medium">Robert Kim</span>
+                            </div>
+                            <span class="text-xs text-gray-500 dark:text-gray-400">9 min read</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+
+        <!-- Newsletter -->
+        <div class="bg-gradient-to-r from-primary-500 to-purple-900 dark:from-gray-800 dark:to-gray-700 rounded-xl p-8 mb-12">
+            <div class="max-w-2xl mx-auto text-center">
+                <h2 class="text-2xl font-bold text-white mb-2">Stay updated with our latest posts</h2>
+                <p class="text-white dark:text-gray-300 mb-6">Join our newsletter and get the best exclusive news on Gaming Tech And TV Shows!</p>
+                <form class="flex flex-col sm:flex-row gap-2">
+                    <input type="email" placeholder="Your email address" class="flex-grow px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-300 dark:text-primary-100">
+                    <button type="submit" class="bg-white text-primary-600 hover:bg-purple-100 px-6 py-3 rounded-lg font-medium transition-colors">Subscribe</button>
+                </form>
+                <p class="text-xs text-primary-200 dark:text-gray-400 mt-3">We respect your privacy. Unsubscribe at any time.</p>
+            </div>
+        </div>
+
+        <!-- Recent Posts -->
+        <div>
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-2xl font-bold font-serif">Recent Articles</h2>
+                <a href="#" class="text-primary-600 dark:text-primary-400 hover:underline">View all</a>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Recent Post 1 -->
+                <article class="bg-white dark:bg-primary-100 rounded-lg overflow-hidden shadow-sm transition-shadow duration-300 neon-blue">
+                    <a href="arttemp.html">
+                        <img class="w-full h-40 object-cover" src="assets/dex1.jpg" alt="Post thumbnail">
+                        <div class="p-5">
+                            <div class="flex items-center text-xs text-gray-500 dark:text-gray-400 mb-2">
+                                <span class="bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 px-2 py-1 rounded">TV Shows</span>
+                                <span class="mx-2">•</span>
+                                <span>May 7, 2025</span>
+                            </div>
+                            <h3 class="text-lg font-bold mb-2 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Dexter Sequel Series, Resurrection, Revealed With Michael C. Hall Returning</h3>
+                            <p class="text-sm text-gray-600 dark:text-gray-300 mb-3">Showtime isn't easing up on the Dexter franchise anytime soon. The network made two big surprise announcements at San Diego Comic-Con on Friday, revealing a brand-new Dexter series, Dexter: Resurrection</p>
+                            <div class="flex items-center">
+                                <img class="w-6 h-6 rounded-full mr-2" src="assets/deb1.png" alt="Author">
+                                <span class="text-xs font-medium">Debra Morgan</span>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+
+                <!-- Recent Post 2 -->
+                <article class="bg-white dark:bg-primary-100 rounded-lg overflow-hidden shadow-sm transition-shadow duration-300 neon-purple">
+                    <a href="arttemp.html">
+                        <img class="w-full h-40 object-cover" src="assets/cp1.jpg" alt="Post thumbnail">
+                        <div class="p-5">
+                            <div class="flex items-center text-xs text-gray-500 dark:text-gray-400 mb-2">
+                                <span class="bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 px-2 py-1 rounded">Games</span>
+                                <span class="mx-2">•</span>
+                                <span>April 4, 2025</span>
+                            </div>
+                            <h3 class="text-lg font-bold mb-2 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Cyberpunk 2077 Patch 2.21 Adds DLSS 4 on PC and Additional Fixes</h3>
+                            <p class="text-sm text-gray-600 dark:text-gray-300 mb-3">CD Projekt has announced that patch 2.21 for Cyberpunk 2077 is rolling out to players on PC, PlayStation 5, and Xbox Series X and S. The brunt of the changes are largely fixes for photo mode, as well as DLSS 4 support for PC players.</p>
+                            <div class="flex items-center">
+                                <img class="w-6 h-6 rounded-full mr-2" src="assets/v1.png" alt="Author">
+                                <span class="text-xs font-medium">Valorie</span>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+
+                <!-- Recent Post 3 -->
+                <article class="bg-white dark:bg-primary-100 rounded-lg overflow-hidden shadow-sm transition-shadow duration-300 neon-green">
+                    <a href="batart.html">
+                        <img class="w-full h-40 object-cover" src="assets/bat1.jpeg" alt="Post thumbnail">
+                        <div class="p-5">
+                            <div class="flex items-center text-xs text-gray-500 dark:text-gray-400 mb-2">
+                                <span class="bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 px-2 py-1 rounded">Movies</span>
+                                <span class="mx-2">•</span>
+                                <span>May 2, 2025</span>
+                            </div>
+                            <h3 class="text-lg font-bold mb-2 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">*THIS ONE WORKS* How to Watch the Batman Movies in Chronological Order</h3>
+                            <p class="text-sm text-gray-600 dark:text-gray-300 mb-3">For those interested in embarking on the complete big-screen Batman journey, we've compiled a largely spoiler-free* list of every Batman movie ordered by release date, from oldest to newest.</p>
+                            <div class="flex items-center">
+                                <img class="w-6 h-6 rounded-full mr-2" src="assets/bw1.png" alt="Author">
+                                <span class="text-xs font-medium">Bruce Wayne</span>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-primary-50 text-gray-300 py-12 border-t border-transparent dark:border-indigo-500">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="md:col-span-2">
+                    <a href="#" class="text-xl font-bold text-white flex items-center mb-4">
+                        <span class="bg-purple-500 text-white p-2 rounded mr-2">Scylox</span>
+                        Blog
+                    </a>
+                    <p class="mb-4">Reviews On Movies, Games, Tech Of All Kinds.</p>
+                    <div class="flex space-x-4">
+                        <a href="https://www.facebook.com/profile.php?id=100007533408899" class="text-gray-500 hover:text-blue-700 dark:hover:text-blue-400 transition-colors" aria-label="Facebook">
+                                    <i class="fab fa-facebook text-2xl"></i>
+                                </a>
+                        <a href="https://github.com/Scylox56" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-github text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-linkedin text-xl"></i>
+                        </a>
+                        <a href="https://www.instagram.com/abdelrahmankhaled680?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-white font-bold mb-4">Categories</h3>
+                    <ul class="space-y-2">
+                        <li><a href="cat-tvshows.html" class="hover:text-white transition-colors">TV Shows</a></li>
+                        <li><a href="cat-games.html" class="hover:text-white transition-colors">Games</a></li>
+                        <li><a href="cat-movies.html" class="hover:text-white transition-colors">Movies</a></li>
+                        <li><a href="cat-tech.html" class="hover:text-white transition-colors">Tech</a></li>
+                        <li><a href="cat-comics.html" class="hover:text-white transition-colors">Comics</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-white font-bold mb-4">Company</h3>
+                    <ul class="space-y-2">
+                        <li><a href="about.html" class="hover:text-white transition-colors">About</a></li>
+                        <li><a href="contact.html" class="hover:text-white transition-colors">Contact</a></li>
+                        <li><a href="about.html" class="hover:text-white transition-colors">Privacy Policy</a></li>
+                        <li><a href="about.html" class="hover:text-white transition-colors">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-sm text-gray-400">
+                <div class="md:flex md:items-center md:justify-between">
+                    <p>© 2025 Scylox - Abdelrahman Khaled.  All rights reserved.</p>
+                    <div class="mt-4 md:mt-0">
+                       <a href="about.html#privacy" class="hover:text-white transition-colors mr-4">Privacy Policy</a>
+                        <a href="about.html#terms" class="hover:text-white transition-colors">Terms of Service</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

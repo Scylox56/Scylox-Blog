@@ -1,0 +1,105 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>API Blog Example</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 2rem;
+      max-width: 800px;
+      margin: auto;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+    img {
+      max-width: 100%;
+      border-radius: 10px;
+    }
+    h1 {
+      font-size: 2rem;
+      margin-top: 1rem;
+    }
+    .meta {
+      color: #888;
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+    .author {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin: 1rem 0;
+    }
+    .author img {
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+    }
+    .featured {
+      margin: 1rem 0;
+    }
+  </style>
+</head>
+<body>
+
+  <h1 id="article-title">Loading title...</h1>
+  <div class="meta">
+    <span id="article-category">Loading category</span> |
+    <span id="article-date">Loading date</span> |
+    <span id="article-readtime">Loading read time</span>
+  </div>
+
+  <div class="author">
+    <img id="author-image" src="https://via.placeholder.com/100" alt="Author" />
+    <div>
+      <div id="author-name">Loading author</div>
+      <div id="author-title">Loading title</div>
+    </div>
+  </div>
+
+  <div class="featured">
+    <img id="featured-image" src="https://via.placeholder.com/1200x600" alt="Featured image">
+    <p id="featured-caption">Loading caption</p>
+  </div>
+
+  <article id="article-content">
+    <p>Loading content...</p>
+  </article>
+
+  <script>
+    const articleURL = 'https://jsonplaceholder.typicode.com/posts/1';
+    const authorURL = 'https://jsonplaceholder.typicode.com/users/1';
+
+    document.addEventListener('DOMContentLoaded', async () => {
+      try {
+        const [articleRes, authorRes] = await Promise.all([
+          fetch(articleURL),
+          fetch(authorURL)
+        ]);
+        const article = await articleRes.json();
+        const author = await authorRes.json();
+
+        document.getElementById('article-title').textContent = article.title;
+        document.getElementById('article-date').textContent = 'May 24, 2025';
+        document.getElementById('article-readtime').textContent = '2 min read';
+        document.getElementById('article-category').textContent = 'Test API';
+        document.getElementById('author-name').textContent = author.name;
+        document.getElementById('author-title').textContent = author.email;
+        document.getElementById('author-image').src = 'https://via.placeholder.com/100';
+        document.getElementById('featured-image').src = 'https://picsum.photos/1200/600';
+        document.getElementById('featured-caption').textContent = 'Random generated image from Picsum';
+        document.getElementById('article-content').innerHTML = `
+          <p>${article.body.replace(/\n/g, '<br>')}</p>
+          <p>This article was fetched from <code>jsonplaceholder.typicode.com</code>.</p>
+        `;
+      } catch (err) {
+        console.error('Failed to load article data:', err);
+      }
+    });
+  </script>
+
+</body>
+</html>

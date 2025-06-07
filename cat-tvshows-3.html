@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TV Shows - Scylox Blog</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: {
+              50: '#121212',
+              100: '#222222',
+              200: '#bae6fd',
+              300: '#7dd3fc',
+              400: '#38bdf8',
+              500: '#0ea5e9',
+              600: '#0284c7',
+              700: '#0369a1',
+              800: '#075985',
+              900: '#0c4a6e',
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            serif: ['Merriweather', 'serif'],
+          }
+        }
+      }
+    };
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="icon" type="image/png" href="assets/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="shortcut icon" href="assets/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png" />
+  <link rel="manifest" href="assets/site.webmanifest" />
+</head>
+
+<body class="bg-gray-50 dark:bg-primary-50 text-gray-800 dark:text-gray-200 transition-colors duration-300">
+    <!-- Navigation -->
+    <nav class="bg-white dark:bg-primary-50 shadow-md sticky top-0 z-50 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="index.html" class="text-xl font-bold text-gray-900 dark:text-white flex items-center">
+                        <span class="bg-purple-500 text-white p-2 rounded mr-2">Scylox</span>
+                        Blog
+                    </a>
+                    <div class="hidden md:ml-10 md:flex md:space-x-8">
+                        <a href="index.html" class="text-gray-500 dark:text-gray-300 hover:text-gray-700 dark:hover:text-gray-100 inline-flex items-center px-1 pt-1 text-sm font-medium">Home</a>
+                        <a href="articles.html" class="text-gray-500 dark:text-gray-300 hover:text-gray-700 dark:hover:text-gray-100 inline-flex items-center px-1 pt-1 text-sm font-medium">Articles</a>
+                        <a href="categories.html" class="text-purple-600 dark:text-white border-b-2 border-purple-500 inline-flex items-center px-1 pt-1 text-sm font-medium">Categories</a>
+                        <a href="about.html" class="text-gray-500 dark:text-gray-300 hover:text-gray-700 dark:hover:text-gray-100 inline-flex items-center px-1 pt-1 text-sm font-medium">About</a>
+                    </div>
+                </div>
+                <div class="flex items-center">
+                    <button id="theme-toggle" type="button" class="p-2 rounded-full focus:outline-none text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700">
+                        <svg id="theme-toggle-dark-icon" class="w-5 h-5 hidden" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+                        </svg>
+                        <svg id="theme-toggle-light-icon" class="w-5 h-5 hidden" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path>
+                        </svg>
+                    </button>
+                    <button class="md:hidden p-2 rounded-full focus:outline-none text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 ml-2" id="mobile-menu-button">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile menu -->
+        <div class="md:hidden hidden" id="mobile-menu">
+            <div class="pt-2 pb-3 space-y-1 px-4">
+                <a href="index.html" class="bg-primary-50 dark:bg-gray-700 text-primary-600 dark:text-primary-400 block px-3 py-2 rounded-md text-base font-medium">Home</a>
+                <a href="articles.html" class="text-gray-500 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 block px-3 py-2 rounded-md text-base font-medium">Articles</a>
+                <a href="categories.html" class="text-gray-500 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 block px-3 py-2 rounded-md text-base font-medium">Categories</a>
+                <a href="about.html" class="text-gray-500 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 block px-3 py-2 rounded-md text-base font-medium">About</a>
+            </div>
+        </div>
+    </nav>
+    <!--end of nav-->
+    <main class="mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="max-w-7xl mx-auto">
+             <div class="mb-12 bg-white dark:bg-primary-100 rounded-xl p-6 shadow-sm">
+                <h2 class="text-xl font-bold mb-4 font-serif">About TV Shows</h2>
+                <p class="text-gray-600 dark:text-gray-300 mb-4">Explore our comprehensive coverage of the latest TV shows, including in-depth reviews, episode breakdowns, and industry news. From streaming exclusives to network television, we cover all the must-watch series.</p>
+                <div class="flex items-center text-sm text-gray-500 dark:text-gray-400">
+                    <span>11 Articles</span>
+                    <span class="mx-2">•</span>
+                    <span>Last updated May 2025</span>
+                </div>
+        </div>            
+            <div>
+                <h2 class="text-2xl font-bold mb-6 font-serif">All TV Show Articles</h2>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    
+                    <article class="bg-white dark:bg-primary-100 rounded-lg overflow-hidden shadow-sm transition-shadow duration-300 hover:shadow-md">
+                        <a href="arttemp.html">
+                            <img class="w-full h-40 object-cover" src="assets/mando3.jpg" alt="The Mandalorian">
+                            <div class="p-5">
+                                <div class="flex items-center text-xs text-gray-500 dark:text-gray-400 mb-2">
+                                    <span>January 18, 2025</span>
+                                    <span class="mx-2">•</span>
+                                    <span>10 min read</span>
+                                </div>
+                                <h3 class="text-lg font-bold mb-2 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Mandalorian Movie Ties Into Thrawn Trilogy</h3>
+                                <p class="text-sm text-gray-600 dark:text-gray-300 mb-3">Jon Favreau reveals how the upcoming film connects to the New Republic era.</p>
+                                <div class="flex items-center">
+                                    <img class="w-6 h-6 rounded-full mr-2" src="assets/grogu1.png" alt="Grogu">
+                                    <span class="text-xs font-medium">Grogu</span>
+                                </div>
+                            </div>
+                        </a>
+                    </article>
+
+                    <article class="bg-white dark:bg-primary-100 rounded-lg overflow-hidden shadow-sm transition-shadow duration-300 hover:shadow-md">
+                        <a href="arttemp.html">
+                            <img class="w-full h-40 object-cover" src="assets/wed1.jpg" alt="Wednesday">
+                            <div class="p-5">
+                                <div class="flex items-center text-xs text-gray-500 dark:text-gray-400 mb-2">
+                                    <span>February 5, 2025</span>
+                                    <span class="mx-2">•</span>
+                                    <span>9 min read</span>
+                                </div>
+                                <h3 class="text-lg font-bold mb-2 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Wednesday Addams Spin-off In Development</h3>
+                                <p class="text-sm text-gray-600 dark:text-gray-300 mb-3">Netflix plans a new series focused on Uncle Fester's early years.</p>
+                                <div class="flex items-center">
+                                    <img class="w-6 h-6 rounded-full mr-2" src="assets/wedadams1.png" alt="Wednesday Addams">
+                                    <span class="text-xs font-medium">Wednesday Addams</span>
+                                </div>
+                            </div>
+                        </a>
+                    </article>
+
+                    <article class="bg-white dark:bg-primary-100 rounded-lg overflow-hidden shadow-sm transition-shadow duration-300 hover:shadow-md">
+                        <a href="arttemp.html">
+                            <img class="w-full h-40 object-cover" src="assets/sever1.jpg" alt="Severance">
+                            <div class="p-5">
+                                <div class="flex items-center text-xs text-gray-500 dark:text-gray-400 mb-2">
+                                    <span>April 22, 2025</span>
+                                    <span class="mx-2">•</span>
+                                    <span>12 min read</span>
+                                </div>
+                                <h3 class="text-lg font-bold mb-2 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Severance Season 2 Preview: What We Know</h3>
+                                <p class="text-sm text-gray-600 dark:text-gray-300 mb-3">Apple TV+'s mind-bending workplace thriller returns with more mysteries.</p>
+                                <div class="flex items-center">
+                                    <img class="w-6 h-6 rounded-full mr-2" src="assets/marks1.png" alt="Mark Scout">
+                                    <span class="text-xs font-medium">Mark Scout</span>
+                                </div>
+                            </div>
+                        </a>
+                    </article>
+                </div>
+
+                <div class="mt-12 flex justify-center">
+                    <nav class="flex items-center space-x-2">
+                        <a href="cat-tvshows-2.html" class="px-4 py-2 border border-purple-300 dark:border-purple-600 rounded-md text-gray-700 dark:text-gray-300 hover:bg-purple-50 dark:hover:bg-purple-700">Previous</a>
+                        <a href="cat-tvshows.html" class="px-4 py-2 border border-purple-300 dark:border-purple-600 rounded-md text-gray-700 dark:text-gray-300 hover:bg-purple-50 dark:hover:bg-purple-700">1</a>
+                        <a href="cat-tvshows-2.html" class="px-4 py-2 border border-purple-300 dark:border-purple-600 rounded-md text-gray-700 dark:text-gray-300 hover:bg-purple-50 dark:hover:bg-purple-700">2</a>
+                        <a href="cat-tvshows-3.html" class="px-4 py-2 border border-purple-500 bg-purple-500 text-white rounded-md">3</a>
+                        <span class="px-4 py-2 border border-purple-300 dark:border-purple-600 rounded-md text-gray-500 dark:text-gray-400 cursor-not-allowed">Next</span>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </main>
+<footer class="bg-primary-50 text-gray-300 py-12 border-t border-transparent dark:border-indigo-500">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="md:col-span-2">
+                    <a href="#" class="text-xl font-bold text-white flex items-center mb-4">
+                        <span class="bg-purple-500 text-white p-2 rounded mr-2">Scylox</span>
+                        Blog
+                    </a>
+                    <p class="mb-4">Reviews On Movies, Games, Tech Of All Kinds.</p>
+                    <div class="flex space-x-4">
+                         <a href="https://www.facebook.com/profile.php?id=100007533408899" class="text-gray-500 hover:text-blue-700 dark:hover:text-blue-400 transition-colors" aria-label="Facebook">
+                                    <i class="fab fa-facebook text-2xl"></i>
+                                </a>
+                        <a href="https://github.com/Scylox56" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-github text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-linkedin text-xl"></i>
+                        </a>
+                        <a href="https://www.instagram.com/abdelrahmankhaled680?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-white font-bold mb-4">Categories</h3>
+                    <ul class="space-y-2">
+                        <li><a href="cat-tvshows.html" class="hover:text-white transition-colors">TV Shows</a></li>
+                        <li><a href="cat-games.html" class="hover:text-white transition-colors">Games</a></li>
+                        <li><a href="cat-movies.html" class="hover:text-white transition-colors">Movies</a></li>
+                        <li><a href="cat-tech.html" class="hover:text-white transition-colors">Tech</a></li>
+                        <li><a href="cat-comics.html" class="hover:text-white transition-colors">Comics</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-white font-bold mb-4">Company</h3>
+                    <ul class="space-y-2">
+                        <li><a href="about.html" class="hover:text-white transition-colors">About</a></li>
+                        <li><a href="contact.html" class="hover:text-white transition-colors">Contact</a></li>
+                        <li><a href="about.html" class="hover:text-white transition-colors">Privacy Policy</a></li>
+                        <li><a href="about.html" class="hover:text-white transition-colors">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-sm text-gray-400">
+                <div class="md:flex md:items-center md:justify-between">
+                    <p>© 2025 Scylox - Abdelrahman Khaled.  All rights reserved.</p>
+                    <div class="mt-4 md:mt-0">
+                        <a href="about.html#privacy" class="hover:text-white transition-colors mr-4">Privacy Policy</a>
+                        <a href="about.html#terms" class="hover:text-white transition-colors">Terms of Service</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

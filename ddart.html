@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Daredevil: Born Again Review</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: {
+              50: '#121212',
+              100: '#222222',
+              200: '#bae6fd',
+              300: '#7dd3fc',
+              400: '#38bdf8',
+              500: '#0ea5e9',
+              600: '#0284c7',
+              700: '#0369a1',
+              800: '#075985',
+              900: '#0c4a6e',
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            serif: ['Merriweather', 'serif'],
+          },
+          animation: {
+            'fade-in': 'fadeIn 0.5s ease-in-out',
+          },
+          keyframes: {
+            fadeIn: {
+              '0%': { opacity: '0' },
+              '100%': { opacity: '1' },
+            }
+          }
+        }
+      }
+    };
+  </script>
+   <link rel="stylesheet" href="style/style.css">
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="icon" type="image/png" href="assets/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="shortcut icon" href="assets/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png" />
+  <link rel="manifest" href="assets/site.webmanifest" />
+</head>
+<body class="bg-gray-50 dark:bg-primary-50 text-gray-800 dark:text-gray-200 transition-colors duration-300">
+    
+    <nav class="bg-white dark:bg-primary-50 shadow-md sticky top-0 z-50 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="index.html" class="text-xl font-bold text-gray-900 dark:text-white flex items-center">
+                        <span class="bg-purple-500 text-white p-2 rounded mr-2">Scylox</span>
+                        Blog
+                    </a>
+                    <div class="hidden md:ml-10 md:flex md:space-x-8">
+                        <a href="index.html" class="text-gray-500 dark:text-gray-300 hover:text-gray-700 dark:hover:text-gray-100 inline-flex items-center px-1 pt-1 text-sm font-medium">Home</a>
+                        <a href="articles.html" class="text-purple-600 dark:text-white border-b-2 border-purple-500 inline-flex items-center px-1 pt-1 text-sm font-medium">Articles</a>
+                        <a href="categories.html" class="text-gray-500 dark:text-gray-300 hover:text-gray-700 dark:hover:text-gray-100 inline-flex items-center px-1 pt-1 text-sm font-medium">Categories</a>
+                        <a href="about.html" class="text-gray-500 dark:text-gray-300 hover:text-gray-700 dark:hover:text-gray-100 inline-flex items-center px-1 pt-1 text-sm font-medium">About</a>
+                    </div>
+                </div>
+                <div class="flex items-center">
+                    <button id="theme-toggle" type="button" class="p-2 rounded-full focus:outline-none text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700">
+                        <svg id="theme-toggle-dark-icon" class="w-5 h-5 hidden" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+                        </svg>
+                        <svg id="theme-toggle-light-icon" class="w-5 h-5 hidden" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path>
+                        </svg>
+                    </button>
+                    <button class="md:hidden p-2 rounded-full focus:outline-none text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700" id="mobile-menu-button">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile menu -->
+        <div class="md:hidden hidden" id="mobile-menu">
+            <div class="pt-2 pb-3 space-y-1 px-4">
+                <a href="index.html" class="text-gray-500 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 block px-3 py-2 rounded-md text-base font-medium">Home</a>
+                <a href="articles.html" class="bg-primary-50 dark:bg-gray-700 text-primary-600 dark:text-primary-400 block px-3 py-2 rounded-md text-base font-medium">Articles</a>
+                <a href="categories.html" class="text-gray-500 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 block px-3 py-2 rounded-md text-base font-medium">Categories</a>
+                <a href="about.html" class="text-gray-500 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 block px-3 py-2 rounded-md text-base font-medium">About</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Article Content -->
+    <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <!-- Article Header -->
+        <header class="mb-12">
+            <div class="flex items-center text-sm text-gray-500 dark:text-gray-400 mb-4">
+                <span class="bg-blue-700/30 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400 px-2 py-1 rounded">TV Shows</span>
+                <span class="mx-2">•</span>
+                <span>March 4, 2025</span>
+                <span class="mx-2">•</span>
+                <span>12 min read</span>
+            </div>
+            <h1 class="text-4xl font-bold font-serif mb-6">Daredevil: Born Again - A Triumphant Return to Hell's Kitchen</h1>
+            <div class="flex items-center">
+                <img class="w-10 h-10 rounded-full mr-3 hover:neon-blue" src="assets/wf1.png" alt="Wilson Fisk">
+                <div>
+                    <p class="font-medium">Wilson Fisk</p>
+                    <p class="text-sm text-gray-500 dark:text-gray-400">TV Critic & Marvel Enthusiast</p>
+                </div>
+            </div>
+        </header>
+
+        <!-- Featured Image -->
+        <div class="mb-12 rounded-xl overflow-hidden shadow-lg">
+            <img src="assets/ddpic4.jpg" alt="Daredevil in action" class="w-full h-auto">
+            <p class="text-sm text-gray-500 dark:text-gray-400 mt-2"> &nbsp; &nbsp;Daredevil: Born Again (Image: Marvel Studios)</p>
+        </div>
+
+        <!-- Article Content -->
+        <article class="prose dark:prose-invert max-w-none">
+            <p class="lead">The return of Charlie Cox as Matt Murdock in "Daredevil: Born Again" delivers everything fans have been hoping for - gritty action, complex characters, and the moral ambiguity that made the original Netflix series so compelling.</p>
+
+            <h2 class="text-2xl font-bold font-serif mt-10 mb-4">A Strong Start</h2>
+            
+            <p>The first episode wastes no time re-establishing Matt Murdock's world. We find him struggling to balance his vigilante activities with his legal career, a tension that has always been at the heart of the character. The show's opening fight sequence in a rainy alleyway is an immediate reminder of why this version of Daredevil stands apart from other Marvel fare.</p>
+
+            <p>Vincent D'Onofrio's Kingpin remains one of the MCU's most compelling villains, and his return is handled with care. The political power he's amassed since we last saw him makes him more dangerous than ever, while still maintaining the vulnerability that makes him human.</p>
+
+            <div class="my-8 p-6 bg-gray-100 dark:bg-purple-900/30 rounded-lg border-l-4 border-purple-500">
+                <p class="font-medium italic">"The hallway fight in episode 3 might be the best action sequence Marvel has ever produced on television."</p>
+            </div>
+
+            <h2 class="text-2xl font-bold font-serif mt-10 mb-4">New Characters, Familiar Faces</h2>
+
+            <p>The introduction of new characters like White Tiger (played by Ana de la Reguera) brings fresh energy to the series, while familiar faces like Foggy Nelson (Elden Henson) and Karen Page (Deborah Ann Woll) return with meaningful story arcs that don't feel like fan service.</p>
+
+           <!-- Video and Image Gallery Section -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-12">
+  <div class="relative group cursor-pointer" onclick="openVideoModal('assets/dd-trailer.mp4')">
+    <div class="rounded-lg overflow-hidden shadow-lg relative">
+      <img src="assets/dd-trail.jpg" alt="Daredevil Season 1 Trailer" class="w-full h-auto">
+      
+      <!-- Play Button Overlay used deepseek-->
+      <div class="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center transition-opacity group-hover:bg-opacity-50">
+        <div class="w-16 h-16 bg-primary-500 rounded-full flex items-center justify-center transform transition-transform group-hover:scale-110">
+          <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path>
+          </svg>
+        </div>
+      </div>
+    </div>
+    <p class="text-sm text-gray-500 dark:text-gray-400 mt-2">Watch Daredevil: Born Again trailer</p>
+  </div>
+
+  <!-- Image Column -->
+  <div class="rounded-lg overflow-hidden shadow-md">
+    <img src="assets/ddpic2.jpg" alt="Matt Murdock" class="w-full h-auto">
+    <p class="text-sm text-gray-500 dark:text-gray-400 mt-2">Matthew Murdock (Image: Marvel Studios)</p>
+  </div>
+</div>
+
+<!-- Video Modal -->
+<div id="videoModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black bg-opacity-75 p-4 flex">
+  <div class="relative w-full max-w-4xl">
+    <!-- Close Button -->
+    <button onclick="closeVideoModal()" class="absolute -top-10 right-0 text-white hover:text-primary-400">
+      <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+      </svg>
+    </button>
+
+    <!-- Local Video Player had some help-->
+    <div class="aspect-w-16 aspect-h-9 bg-black">
+      <video id="videoPlayer" class="w-full h-96 md:h-[500px]" controls>
+        <source src="" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  </div>
+</div>
+<!--end of video -->
+            <h2 class="text-2xl font-bold font-serif mt-10 mb-4">Themes and Tone</h2>
+
+            <p>What continues to set Daredevil apart is its willingness to grapple with complex moral questions. The show explores themes of justice versus vengeance, the limits of the law, and whether one man can truly make a difference in a city as corrupt as New York.</p>
+
+            <p>The tone strikes a perfect balance between the darker Netflix series and the more traditional MCU fare. There are moments of humor (mostly provided by Foggy), but they never undercut the gravity of the situations Matt finds himself in.</p>
+
+            <h2 class="text-2xl font-bold font-serif mt-10 mb-4">Production Values</h2>
+
+            <p>The move to Disney+ has clearly come with an increased budget. The fight choreography is more elaborate than ever, and the cinematography makes excellent use of light and shadow to create a neo-noir atmosphere. The much-discussed hallway fight in episode 3 might be the best action sequence Marvel has ever produced on television.</p>
+
+            <div class="my-8">
+                <blockquote class="twitter-tweet">
+                    <p lang="en" dir="ltr">Just watched the first 3 episodes of Daredevil: Born Again and HOLY COW. <br><br>Charlie Cox IS Matt Murdock. The action, the drama, the moral complexity - it's all there. Marvel just dropped their best Disney+ show yet. <a href="#">#DaredevilBornAgain</a></p>
+                    &mdash; Wilson Fisk (@KingpinReviews) <a href="#">March 4, 2025</a>
+                </blockquote>
+            </div>
+
+            <h2 class="text-2xl font-bold font-serif mt-10 mb-4">Final Verdict</h2>
+
+            <p>Daredevil: Born Again successfully brings the character into the MCU proper while maintaining what made the original series special. With stellar performances, breathtaking action, and thoughtful storytelling, this is must-watch television for any Marvel fan.</p>
+
+            <div class="flex items-center mt-12 p-6 bg-gray-100 dark:bg-purple-900/30 rounded-lg">
+                <div class="text-5xl font-bold mr-4 text-purple-600 dark:text-purple-400">9.5</div>
+                <div>
+                    <div class="flex mb-2">
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star-half-alt text-yellow-400"></i>
+                    </div>
+                    <p class="font-medium">Exceptional - One of Marvel's best Disney+ offerings to date</p>
+                </div>
+            </div>
+        </article>
+
+        <div class="mt-12 mb-8">
+            <div class="flex flex-wrap gap-2">
+                <a href="#" class="px-3 py-1 bg-gray-200 dark:bg-gray-700 rounded-full text-sm hover:bg-gray-300 dark:hover:bg-gray-600">#Daredevil</a>
+                <a href="#" class="px-3 py-1 bg-gray-200 dark:bg-gray-700 rounded-full text-sm hover:bg-gray-300 dark:hover:bg-gray-600">#Marvel</a>
+                <a href="#" class="px-3 py-1 bg-gray-200 dark:bg-gray-700 rounded-full text-sm hover:bg-gray-300 dark:hover:bg-gray-600">#DisneyPlus</a>
+                <a href="#" class="px-3 py-1 bg-gray-200 dark:bg-gray-700 rounded-full text-sm hover:bg-gray-300 dark:hover:bg-gray-600">#TVReview</a>
+            </div>
+        </div>
+
+        <div class="mt-12 p-6 bg-gray-100 dark:bg-purple-900/30 rounded-lg">
+            <div class="flex items-center mb-4">
+                <img class="w-16 h-16 rounded-full mr-4" src="assets/wf1.png" alt="Wilson Fisk">
+                <div>
+                    <h3 class="text-xl font-bold">Wilson Fisk</h3>
+                    <p class="text-gray-600 dark:text-gray-400">TV Critic & Businessman with a passion for Marvel comics</p>
+                </div>
+            </div>
+            <p class="text-gray-700 dark:text-gray-300">Wilson has been reviewing television and movies for over 10 years. When he's not writing about entertainment, he's running his legitimate business empire in New York City.</p>
+        </div>
+
+        <!-- Comments Section -->
+        <section class="mt-16">
+            <h2 class="text-2xl font-bold font-serif mb-8">Comments (24)</h2>
+            
+            <div class="mb-12 bg-white dark:bg-primary-100 p-6 rounded-lg shadow-sm">
+                <h3 class="text-lg font-medium mb-4">Leave a comment</h3>
+                <form>
+                    <div class="mb-4">
+                        <textarea class="w-full px-4 py-3 border border-gray-300 dark:border-primary-50 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent dark:bg-primary-50" rows="4" placeholder="Write your comment..."></textarea>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                        <input type="text" class="px-4 py-3 border border-gray-300 dark:border-primary-50 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent dark:bg-primary-50" placeholder="Name">
+                        <input type="email" class="px-4 py-3 border border-gray-300 dark:border-primary-50 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent dark:bg-primary-50" placeholder="Email">
+                    </div>
+                    <button type="submit" class="bg-purple-500 dark:bg-purple-900 text-white px-6 py-3 rounded-lg font-medium transition-colors">Post Comment</button>
+                </form>
+            </div>
+
+            <!-- Comments List -->
+            <div class="space-y-8">
+                <div class="flex">
+                    <img class="w-10 h-10 rounded-full mr-4" src="https://randomuser.me/api/portraits/women/43.jpg" alt="User">
+                    <div class="flex-1">
+                        <div class="bg-white dark:bg-primary-100 p-4 rounded-lg shadow-sm neon-green">
+                            <div class="flex justify-between items-center mb-2">
+                                <h4 class="font-bold">Sarah Johnson</h4>
+                                <span class="text-sm text-gray-500 dark:text-gray-400">2 hours ago</span>
+                            </div>
+                            <p class="text-gray-700 dark:text-gray-300 mb-3">Great review! I completely agree about the hallway fight scene - it might be even better than the famous one from season 1 of the original series.</p>
+                            <button class="text-sm text-primary-600 dark:text-primary-400 hover:underline">Reply</button>
+                        </div>
+                        
+                
+                        <div class="flex mt-4 ml-4">
+                            <img class="w-8 h-8 rounded-full mr-3" src="https://randomuser.me/api/portraits/men/32.jpg" alt="User">
+                            <div class="bg-white dark:bg-gray-800 p-3 rounded-lg shadow-sm flex-1">
+                                <div class="flex justify-between items-center mb-1">
+                                    <h4 class="font-medium text-sm">Michael Chen</h4>
+                                    <span class="text-xs text-gray-500 dark:text-gray-400">1 hour ago</span>
+                                </div>
+                                <p class="text-gray-700 dark:text-gray-300 text-sm">I actually preferred the church fight in episode 4, but they're all incredible!</p>
+                                <button class="text-xs text-primary-600 dark:text-primary-400 hover:underline">Reply</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            
+                <div class="flex">
+                    <img class="w-10 h-10 rounded-full mr-4" src="https://randomuser.me/api/portraits/men/75.jpg" alt="User">
+                    <div class="flex-1">
+                        <div class="bg-white dark:bg-primary-100 p-4 rounded-lg shadow-sm neon-purple">
+                            <div class="flex justify-between items-center mb-2">
+                                <h4 class="font-bold">David Wilson</h4>
+                                <span class="text-sm text-gray-500 dark:text-gray-400">5 hours ago</span>
+                            </div>
+                            <p class="text-gray-700 dark:text-gray-300 mb-3">I was skeptical about bringing Daredevil into the MCU proper, but they've done an amazing job maintaining the tone while making it feel connected. Great review!</p>
+                            <button class="text-sm text-primary-600 dark:text-primary-400 hover:underline">Reply</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex">
+                    <img class="w-10 h-10 rounded-full mr-4" src="https://randomuser.me/api/portraits/women/68.jpg" alt="User">
+                    <div class="flex-1">
+                        <div class="bg-white dark:bg-primary-100 p-4 rounded-lg shadow-sm neon-red">
+                            <div class="flex justify-between items-center mb-2">
+                                <h4 class="font-bold">Emily Rodriguez</h4>
+                                <span class="text-sm text-gray-500 dark:text-gray-400">1 day ago</span>
+                            </div>
+                            <p class="text-gray-700 dark:text-gray-300 mb-3">Vincent D'Onofrio is just perfect as Kingpin. Every scene he's in is electric. I'm so glad they kept him for this series.</p>
+                            <button class="text-sm text-primary-600 dark:text-primary-400 hover:underline">Reply</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-8 text-center">
+                <button class="px-6 py-2 border border-gray-300 dark:border-gray-600 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+                    Load More Comments
+                </button>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer-->
+    <footer class="bg-primary-50 text-gray-300 py-12 border-t border-transparent dark:border-indigo-500">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="md:col-span-2">
+                    <a href="#" class="text-xl font-bold text-white flex items-center mb-4">
+                        <span class="bg-purple-500 text-white p-2 rounded mr-2">Scylox</span>
+                        Blog
+                    </a>
+                    <p class="mb-4">Reviews On Movies, Games, Tech Of All Kinds.</p>
+                    <div class="flex space-x-4">
+                         <a href="https://www.facebook.com/profile.php?id=100007533408899" class="text-gray-500 hover:text-blue-700 dark:hover:text-blue-400 transition-colors" aria-label="Facebook">
+                                    <i class="fab fa-facebook text-2xl"></i>
+                                </a>
+                        <a href="https://github.com/Scylox56" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-github text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-linkedin text-xl"></i>
+                        </a>
+                        <a href="https://www.instagram.com/abdelrahmankhaled680?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-white font-bold mb-4">Categories</h3>
+                    <ul class="space-y-2">
+                       <li><a href="cat-tvshows.html" class="hover:text-white transition-colors">TV Shows</a></li>
+                        <li><a href="cat-games.html" class="hover:text-white transition-colors">Games</a></li>
+                        <li><a href="cat-movies.html" class="hover:text-white transition-colors">Movies</a></li>
+                        <li><a href="cat-tech.html" class="hover:text-white transition-colors">Tech</a></li>
+                        <li><a href="cat-comics.html" class="hover:text-white transition-colors">Comics</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-white font-bold mb-4">Company</h3>
+                    <ul class="space-y-2">
+                        <li><a href="about.html" class="hover:text-white transition-colors">About</a></li>
+                        <li><a href="contact.html" class="hover:text-white transition-colors">Contact</a></li>
+                        <li><a href="about.html" class="hover:text-white transition-colors">Privacy Policy</a></li>
+                        <li><a href="about.html" class="hover:text-white transition-colors">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-sm text-gray-400">
+                <div class="md:flex md:items-center md:justify-between">
+                    <p>© 2025 Scylox - Abdelrahman Khaled.  All rights reserved.</p>
+                    <div class="mt-4 md:mt-0">
+                        <a href="about.html#privacy" class="hover:text-white transition-colors mr-4">Privacy Policy</a>
+                        <a href="about.html#terms" class="hover:text-white transition-colors">Terms of Service</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

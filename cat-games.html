@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Games - Scylox Blog</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: {
+              50: '#121212',
+              100: '#222222',
+              200: '#bae6fd',
+              300: '#7dd3fc',
+              400: '#38bdf8',
+              500: '#0ea5e9',
+              600: '#0284c7',
+              700: '#0369a1',
+              800: '#075985',
+              900: '#0c4a6e',
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            serif: ['Merriweather', 'serif'],
+          }
+        }
+      }
+    };
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="icon" type="image/png" href="assets/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="shortcut icon" href="assets/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png" />
+  <link rel="manifest" href="assets/site.webmanifest" />
+</head>
+
+<body class="bg-gray-50 dark:bg-primary-50 text-gray-800 dark:text-gray-200 transition-colors duration-300">
+    <!-- Navigation -->
+    <nav class="bg-white dark:bg-primary-50 shadow-md sticky top-0 z-50 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="index.html" class="text-xl font-bold text-gray-900 dark:text-white flex items-center">
+                        <span class="bg-purple-500 text-white p-2 rounded mr-2">Scylox</span>
+                        Blog
+                    </a>
+                    <div class="hidden md:ml-10 md:flex md:space-x-8">
+                        <a href="index.html" class="text-gray-500 dark:text-gray-300 hover:text-gray-700 dark:hover:text-gray-100 inline-flex items-center px-1 pt-1 text-sm font-medium">Home</a>
+                        <a href="articles.html" class="text-gray-500 dark:text-gray-300 hover:text-gray-700 dark:hover:text-gray-100 inline-flex items-center px-1 pt-1 text-sm font-medium">Articles</a>
+                        <a href="categories.html" class="text-purple-600 dark:text-white border-b-2 border-purple-500 inline-flex items-center px-1 pt-1 text-sm font-medium">Categories</a>
+                        <a href="about.html" class="text-gray-500 dark:text-gray-300 hover:text-gray-700 dark:hover:text-gray-100 inline-flex items-center px-1 pt-1 text-sm font-medium">About</a>
+                    </div>
+                </div>
+                <div class="flex items-center">
+                    <button id="theme-toggle" type="button" class="p-2 rounded-full focus:outline-none text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700">
+                        <svg id="theme-toggle-dark-icon" class="w-5 h-5 hidden" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+                        </svg>
+                        <svg id="theme-toggle-light-icon" class="w-5 h-5 hidden" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path>
+                        </svg>
+                    </button>
+                    <button class="md:hidden p-2 rounded-full focus:outline-none text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 ml-2" id="mobile-menu-button">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile menu -->
+        <div class="md:hidden hidden" id="mobile-menu">
+            <div class="pt-2 pb-3 space-y-1 px-4">
+                <a href="index.html" class="bg-primary-50 dark:bg-gray-700 text-primary-600 dark:text-primary-400 block px-3 py-2 rounded-md text-base font-medium">Home</a>
+                <a href="articles.html" class="text-gray-500 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 block px-3 py-2 rounded-md text-base font-medium">Articles</a>
+                <a href="categories.html" class="text-gray-500 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 block px-3 py-2 rounded-md text-base font-medium">Categories</a>
+                <a href="about.html" class="text-gray-500 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 block px-3 py-2 rounded-md text-base font-medium">About</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="bg-gradient-to-r from-purple-600 to-purple-800 dark:from-purple-800 dark:to-purple-900 text-white py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center">
+                <div class="bg-white/20 backdrop-blur-sm p-3 rounded-full mr-4">
+                    <i class="fas fa-gamepad text-xl"></i>
+                </div>
+                <div>
+                    <h1 class="text-3xl font-bold">Games</h1>
+                    <p class="mt-2 text-purple-100 dark:text-purple-200">Reviews, news and analysis of the gaming world</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Category Content -->
+    <main class="mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="max-w-7xl mx-auto">
+
+            <div class="mb-12 bg-white dark:bg-primary-100 rounded-xl p-6 shadow-sm">
+                <h2 class="text-xl font-bold mb-4 font-serif">About Games</h2>
+                <p class="text-gray-600 dark:text-gray-300 mb-4">Dive into the latest gaming news, in-depth reviews of new releases, and analysis of industry trends. From AAA blockbusters to indie gems, we cover all platforms and genres.</p>
+                <div class="flex items-center text-sm text-gray-500 dark:text-gray-400">
+                    <span>11 Articles</span>
+                    <span class="mx-2">•</span>
+                    <span>Last updated May 2025</span>
+                </div>
+            </div>
+
+            <!-- Featured Articles -->
+            <div class="mb-12">
+                <h2 class="text-2xl font-bold mb-6 font-serif">Featured Game Articles</h2>
+                <div class="grid md:grid-cols-2 gap-8">
+
+                    <article class="bg-white dark:bg-primary-100 rounded-xl overflow-hidden shadow-sm transition-shadow duration-300 hover:shadow-md">
+                        <a href="hd2art.html">
+                            <img class="w-full h-48 object-cover" src="assets/hd2-1.png" alt="Helldivers 2">
+                            <div class="p-6">
+                                <div class="flex items-center text-xs text-gray-500 dark:text-gray-400 mb-2">
+                                    <span>May 14, 2025</span>
+                                    <span class="mx-2">•</span>
+                                    <span>15 min read</span>
+                                </div>
+                                <h3 class="text-xl font-bold mb-2 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Helldivers 2 Leaks Reveal Super Earth Gameplay</h3>
+                                <p class="text-gray-600 dark:text-gray-300 mb-4">Players will fight against the Illuminate on Super Earth itself next week — and now gameplay of Super Earth mega cities has leaked.</p>
+                                <div class="flex items-center">
+                                    <img class="w-8 h-8 rounded-full mr-2" src="assets/jdiver1.png" alt="John Helldiver">
+                                    <span class="text-sm font-medium">John Helldiver</span>
+                                </div>
+                            </div>
+                        </a>
+                    </article>
+
+                    <article class="bg-white dark:bg-primary-100 rounded-xl overflow-hidden shadow-sm transition-shadow duration-300 hover:shadow-md">
+                        <a href="arttemp.html">
+                            <img class="w-full h-48 object-cover" src="assets/cp1.jpg" alt="Cyberpunk 2077">
+                            <div class="p-6">
+                                <div class="flex items-center text-xs text-gray-500 dark:text-gray-400 mb-2">
+                                    <span>May 5, 2025</span>
+                                    <span class="mx-2">•</span>
+                                    <span>18 min read</span>
+                                </div>
+                                <h3 class="text-xl font-bold mb-2 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Cyberpunk 2077: Phantom Liberty - Final Verdict</h3>
+                                <p class="text-gray-600 dark:text-gray-300 mb-4">Two years after its rocky launch, CD Projekt Red's redemption arc concludes with an expansion that redefines the game.</p>
+                                <div class="flex items-center">
+                                    <img class="w-8 h-8 rounded-full mr-2" src="assets/v1.png" alt="Valorie">
+                                    <span class="text-sm font-medium">Valorie</span>
+                                </div>
+                            </div>
+                        </a>
+                    </article>
+                </div>
+            </div>
+
+            <div>
+                <h2 class="text-2xl font-bold mb-6 font-serif">All Game Articles</h2>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+    
+                    <article class="bg-white dark:bg-primary-100 rounded-lg overflow-hidden shadow-sm transition-shadow duration-300 hover:shadow-md">
+                        <a href="arttemp.html">
+                            <img class="w-full h-40 object-cover" src="assets/gow6.jpg" alt="God of War">
+                            <div class="p-5">
+                                <div class="flex items-center text-xs text-gray-500 dark:text-gray-400 mb-2">
+                                    <span>April 28, 2025</span>
+                                    <span class="mx-2">•</span>
+                                    <span>12 min read</span>
+                                </div>
+                                <h3 class="text-lg font-bold mb-2 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">God of War: Ragnarök DLC Announced</h3>
+                                <p class="text-sm text-gray-600 dark:text-gray-300 mb-3">Santa Monica Studio reveals "Valhalla" expansion featuring roguelike gameplay and new story content.</p>
+                                <div class="flex items-center">
+                                    <img class="w-6 h-6 rounded-full mr-2" src="assets/kratos1.png" alt="Kratos">
+                                    <span class="text-xs font-medium">Kratos</span>
+                                </div>
+                            </div>
+                        </a>
+                    </article>
+
+                    <article class="bg-white dark:bg-primary-100 rounded-lg overflow-hidden shadow-sm transition-shadow duration-300 hover:shadow-md">
+                        <a href="arttemp.html">
+                            <img class="w-full h-40 object-cover" src="assets/zelda1.png" alt="Zelda">
+                            <div class="p-5">
+                                <div class="flex items-center text-xs text-gray-500 dark:text-gray-400 mb-2">
+                                    <span>April 15, 2025</span>
+                                    <span class="mx-2">•</span>
+                                    <span>14 min read</span>
+                                </div>
+                                <h3 class="text-lg font-bold mb-2 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Zelda: Tears of the Kingdom - Speedrun Records Broken</h3>
+                                <p class="text-sm text-gray-600 dark:text-gray-300 mb-3">New glitch discovered allows players to complete the game in under 30 minutes.</p>
+                                <div class="flex items-center">
+                                    <img class="w-6 h-6 rounded-full mr-2" src="assets/link1.png" alt="Link">
+                                    <span class="text-xs font-medium">Link</span>
+                                </div>
+                            </div>
+                        </a>
+                    </article>
+
+                    <article class="bg-white dark:bg-primary-100 rounded-lg overflow-hidden shadow-sm transition-shadow duration-300 hover:shadow-md">
+                        <a href="arttemp.html">
+                            <img class="w-full h-40 object-cover" src="assets/starfield3.png" alt="Starfield">
+                            <div class="p-5">
+                                <div class="flex items-center text-xs text-gray-500 dark:text-gray-400 mb-2">
+                                    <span>March 30, 2025</span>
+                                    <span class="mx-2">•</span>
+                                    <span>16 min read</span>
+                                </div>
+                                <h3 class="text-lg font-bold mb-2 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Starfield: Shattered Space Expansion Review</h3>
+                                <p class="text-sm text-gray-600 dark:text-gray-300 mb-3">Bethesda's first major DCP finally delivers on the game's original promise with deeper RPG systems.</p>
+                                <div class="flex items-center">
+                                    <img class="w-6 h-6 rounded-full mr-2" src="assets/vasco1.png" alt="Vasco">
+                                    <span class="text-xs font-medium">Vasco</span>
+                                </div>
+                            </div>
+                        </a>
+                    </article>
+
+                    <article class="bg-white dark:bg-primary-100 rounded-lg overflow-hidden shadow-sm transition-shadow duration-300 hover:shadow-md">
+                        <a href="arttemp.html">
+                            <img class="w-full h-40 object-cover" src="assets/npick1.png" alt="Switch 2">
+                            <div class="p-5">
+                                <div class="flex items-center text-xs text-gray-500 dark:text-gray-400 mb-2">
+                                    <span>March 22, 2025</span>
+                                    <span class="mx-2">•</span>
+                                    <span>9 min read</span>
+                                </div>
+                                <h3 class="text-lg font-bold mb-2 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Nintendo Switch 2 Launch Lineup Leaked</h3>
+                                <p class="text-sm text-gray-600 dark:text-gray-300 mb-3">Retail listings reveal 12 first-party titles coming to the new console at launch.</p>
+                                <div class="flex items-center">
+                                    <img class="w-6 h-6 rounded-full mr-2" src="assets/mario1.png" alt="Mario">
+                                    <span class="text-xs font-medium">Mario</span>
+                                </div>
+                            </div>
+                        </a>
+                    </article>
+
+                    <article class="bg-white dark:bg-primary-100 rounded-lg overflow-hidden shadow-sm transition-shadow duration-300 hover:shadow-md">
+                        <a href="arttemp.html">
+                            <img class="w-full h-40 object-cover" src="assets/spider2.png" alt="Spider-Man 2">
+                            <div class="p-5">
+                                <div class="flex items-center text-xs text-gray-500 dark:text-gray-400 mb-2">
+                                    <span>February 18, 2025</span>
+                                    <span class="mx-2">•</span>
+                                    <span>11 min read</span>
+                                </div>
+                                <h3 class="text-lg font-bold mb-2 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Spider-Man 2 New Game+ Update Analysis</h3>
+                                <p class="text-sm text-gray-600 dark:text-gray-300 mb-3">Insomniac's latest patch adds long-requested features and fixes the game's pacing issues.</p>
+                                <div class="flex items-center">
+                                    <img class="w-6 h-6 rounded-full mr-2" src="assets/miles1.png" alt="Miles Morales">
+                                    <span class="text-xs font-medium">Miles Morales</span>
+                                </div>
+                            </div>
+                        </a>
+                    </article>
+
+                    <article class="bg-white dark:bg-primary-100 rounded-lg overflow-hidden shadow-sm transition-shadow duration-300 hover:shadow-md">
+                        <a href="arttemp.html">
+                            <img class="w-full h-40 object-cover" src="assets/avowed.jpg" alt="Avowed">
+                            <div class="p-5">
+                                <div class="flex items-center text-xs text-gray-500 dark:text-gray-400 mb-2">
+                                    <span>January 30, 2025</span>
+                                    <span class="mx-2">•</span>
+                                    <span>13 min read</span>
+                                </div>
+                                <h3 class="text-lg font-bold mb-2 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Avowed: Obsidian's Return to Form</h3>
+                                <p class="text-sm text-gray-600 dark:text-gray-300 mb-3">Early previews suggest this could be the studio's best RPG since Fallout: New Vegas.</p>
+                                <div class="flex items-center">
+                                    <img class="w-6 h-6 rounded-full mr-2" src="assets/pillars1.png" alt="Pillars">
+                                    <span class="text-xs font-medium">Eora</span>
+                                </div>
+                            </div>
+                        </a>
+                    </article>
+
+                    <article class="bg-white dark:bg-primary-100 rounded-lg overflow-hidden shadow-sm transition-shadow duration-300 hover:shadow-md">
+                        <a href="arttemp.html">
+                            <img class="w-full h-40 object-cover" src="assets/diablo4.jpg" alt="Diablo 4">
+                            <div class="p-5">
+                                <div class="flex items-center text-xs text-gray-500 dark:text-gray-400 mb-2">
+                                    <span>January 15, 2025</span>
+                                    <span class="mx-2">•</span>
+                                    <span>10 min read</span>
+                                </div>
+                                <h3 class="text-lg font-bold mb-2 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Diablo 4 Season 4 Complete Overhaul</h3>
+                                <p class="text-sm text-gray-600 dark:text-gray-300 mb-3">Blizzard addresses player complaints with massive itemization changes and endgame improvements.</p>
+                                <div class="flex items-center">
+                                    <img class="w-6 h-6 rounded-full mr-2" src="assets/lilith.png" alt="Lilith">
+                                    <span class="text-xs font-medium">Lilith</span>
+                                </div>
+                            </div>
+                        </a>
+                    </article>
+
+                    <article class="bg-white dark:bg-primary-100 rounded-lg overflow-hidden shadow-sm transition-shadow duration-300 hover:shadow-md">
+                        <a href="arttemp.html">
+                            <img class="w-full h-40 object-cover" src="assets/stalker2.jpg" alt="STALKER 2">
+                            <div class="p-5">
+                                <div class="flex items-center text-xs text-gray-500 dark:text-gray-400 mb-2">
+                                    <span>December 20, 2024</span>
+                                    <span class="mx-2">•</span>
+                                    <span>8 min read</span>
+                                </div>
+                                <h3 class="text-lg font-bold mb-2 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">STALKER 2: Heart of Chornobyl - Preview</h3>
+                                <p class="text-sm text-gray-600 dark:text-gray-300 mb-3">After multiple delays, we go hands-on with the most atmospheric shooter of 2025.</p>
+                                <div class="flex items-center">
+                                    <img class="w-6 h-6 rounded-full mr-2" src="assets/strelok1.png" alt="Stalker">
+                                    <span class="text-xs font-medium">Strelok</span>
+                                </div>
+                            </div>
+                        </a>
+                    </article>
+                    <article class="bg-white dark:bg-primary-100 rounded-lg overflow-hidden shadow-sm transition-shadow duration-300 hover:shadow-md">
+                        <a href="arttemp.html">
+                            <img class="w-full h-40 object-cover" src="assets/gtavi.jpeg" alt="STALKER 2">
+                            <div class="p-5">
+                                <div class="flex items-center text-xs text-gray-500 dark:text-gray-400 mb-2">
+                                    <span>May 12, 2025</span>
+                                    <span class="mx-2">•</span>
+                                    <span>12 min read</span>
+                                </div>
+                                <h3 class="text-lg font-bold mb-2 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Grand Theft Auto VI Trailer II</h3>
+                                <p class="text-sm text-gray-600 dark:text-gray-300 mb-3">After multiple delays, Here is a first look of GTA VI's new Trailer 2.</p>
+                                <div class="flex items-center">
+                                    <img class="w-6 h-6 rounded-full mr-2" src="assets/duval1.png" alt="Jason">
+                                    <span class="text-xs font-medium">Jason Duval</span>
+                                </div>
+                            </div>
+                        </a>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-primary-50 text-gray-300 py-12 border-t border-transparent dark:border-indigo-500">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="md:col-span-2">
+                    <a href="#" class="text-xl font-bold text-white flex items-center mb-4">
+                        <span class="bg-purple-500 text-white p-2 rounded mr-2">Scylox</span>
+                        Blog
+                    </a>
+                    <p class="mb-4">Reviews On Movies, Games, Tech Of All Kinds.</p>
+                    <div class="flex space-x-4">
+                         <a href="https://www.facebook.com/profile.php?id=100007533408899" class="text-gray-500 hover:text-blue-700 dark:hover:text-blue-400 transition-colors" aria-label="Facebook">
+                                    <i class="fab fa-facebook text-2xl"></i>
+                                </a>
+                        <a href="https://github.com/Scylox56" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-github text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-linkedin text-xl"></i>
+                        </a>
+                        <a href="https://www.instagram.com/abdelrahmankhaled680?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-white font-bold mb-4">Categories</h3>
+                    <ul class="space-y-2">
+                        <li><a href="cat-tvshows.html" class="hover:text-white transition-colors">TV Shows</a></li>
+                        <li><a href="cat-games.html" class="hover:text-white transition-colors">Games</a></li>
+                        <li><a href="cat-movies.html" class="hover:text-white transition-colors">Movies</a></li>
+                        <li><a href="cat-tech.html" class="hover:text-white transition-colors">Tech</a></li>
+                        <li><a href="cat-comics.html" class="hover:text-white transition-colors">Comics</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-white font-bold mb-4">Company</h3>
+                    <ul class="space-y-2">
+                        <li><a href="about.html" class="hover:text-white transition-colors">About</a></li>
+                        <li><a href="contact.html" class="hover:text-white transition-colors">Contact</a></li>
+                        <li><a href="about.html" class="hover:text-white transition-colors">Privacy Policy</a></li>
+                        <li><a href="about.html" class="hover:text-white transition-colors">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-sm text-gray-400">
+                <div class="md:flex md:items-center md:justify-between">
+                    <p>© 2025 Scylox - Abdelrahman Khaled.  All rights reserved.</p>
+                    <div class="mt-4 md:mt-0">
+                        <a href="about.html#privacy" class="hover:text-white transition-colors mr-4">Privacy Policy</a>
+                        <a href="about.html#terms" class="hover:text-white transition-colors">Terms of Service</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
