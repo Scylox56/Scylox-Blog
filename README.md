@@ -5,10 +5,8 @@ A responsive and modern blog website built with **HTML**, **CSS**, **Tailwind CS
 ## Features
 
 - Responsive design for desktop, tablet, and mobile
-- Clean and modern UI with Tailwind CSS
+- Clean and modern UI
 - Interactive navigation and UI elements using JavaScript
-- Reusable component structure
-- SEO-friendly markup
 
 ## Built With
 
